@@ -82,3 +82,20 @@ for (const expense of expenses) {
     dateCell.textContent = expense.date;
     deleteCell.appendChild(deleteBtn);
 }
+
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+darkModeToggle.addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+
+    // Save mode preference
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDarkMode);
+});
+
+// Load dark mode preference on page load
+window.addEventListener('load', function() {
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+    }
+});
